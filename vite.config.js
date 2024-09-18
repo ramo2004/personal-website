@@ -1,12 +1,16 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
-    resolve: {
-        alias: {
-            'three': 'three'
+    base: '/personal-website/',
+    build: {
+        outDir: 'dist',
+        assetsDir: 'assets',
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+            },
         }
     },
-    optimizeDeps: {
-        include: ['three']
-    }
+    publicDir: 'public', // This ensures files in the public directory are copied to build output
 })
