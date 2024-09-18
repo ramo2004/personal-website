@@ -45,18 +45,18 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-const cubeTexture = new THREE.TextureLoader().load('/public/eth.pic.png')
+const cubeTexture = new THREE.TextureLoader().load('/eth.pic.png')
 const cube = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
   new THREE.MeshBasicMaterial({ map: cubeTexture })
 )
 scene.add(cube)
 
-const spaceTexture = new THREE.TextureLoader().load('/public/space_background.png')
+const spaceTexture = new THREE.TextureLoader().load('/space_background.png')
 scene.background = spaceTexture
 
-const moonTexture = new THREE.TextureLoader().load('/public/moon_texture.png')
-const normalTexture = new THREE.TextureLoader().load('/public/moon_normal.png')
+const moonTexture = new THREE.TextureLoader().load('/moon_texture.png')
+const normalTexture = new THREE.TextureLoader().load('/moon_normal.png')
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
