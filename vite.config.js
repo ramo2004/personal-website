@@ -10,7 +10,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
             },
-        }
+        },
     },
-    publicDir: 'public', // This ensures files in the public directory are copied to build output
+    publicDir: 'public',
 })
