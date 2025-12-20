@@ -1,272 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/personal-website/vite.svg" />
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-      @import url("https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap");
-    </style>
+    <link rel="icon" type="image/svg+xml" href="/personal-website/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/personal-website/assets/index-COIrEtRt.js"></script>
-    <link rel="modulepreload" crossorigin href="/personal-website/assets/three-DK-7qx18.js">
-    <link rel="stylesheet" crossorigin href="/personal-website/assets/index-wGFG2YVS.css">
+    <title>Omar Mian | Technical Product Manager</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Omar Mian - Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP, building innovative AI-powered applications." />
+    <meta name="keywords" content="Omar Mian, Technical Product Manager, AI, Product Management, Cornell University, Software Engineering" />
+    <meta name="author" content="Omar Mian" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Omar Mian | Technical Product Manager" />
+    <meta property="og:description" content="Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://omarmian.com" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Omar Mian | Technical Product Manager" />
+    <meta name="twitter:description" content="Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/personal-website/assets/index-D1Uc-_Yp.js"></script>
+    <link rel="modulepreload" crossorigin href="/personal-website/assets/three-B4ftRAOq.js">
+    <link rel="stylesheet" crossorigin href="/personal-website/assets/index-1JS21ilH.css">
   </head>
   <body>
-    <div id="app"></div>
-    <canvas id="bg"> </canvas>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Loading experience...</p>
+      </div>
+    </div>
+
+    <!-- The 3D Canvas Container -->
+    <div id="bg-container" aria-hidden="true"></div>
+
+    <!-- Main Content Overlay -->
+    <main id="main-content">
       <header>
         <h1>Omar Mian</h1>
-        <p>Welcome to my website!</p>
+        <p class="subtitle">Technical Product Manager</p>
+        <div class="header-actions">
+          <a href="/personal-website/Omar_Mian_Resume.pdf" download="Omar_Mian_Resume.pdf" class="btn-resume" aria-label="Download Resume">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 11L3 6L4.4 4.6L7 7.2V0H9V7.2L11.6 4.6L13 6L8 11Z" fill="currentColor"/>
+              <path d="M0 14V16H16V14H0Z" fill="currentColor"/>
+            </svg>
+            Resume
+          </a>
+          <div class="social-links">
+            <a href="https://github.com/ramo2004" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com/in/omarimian/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+            </a>
+          </div>
+        </div>
       </header>
 
-      <blockquote>
-        <p>I am a student at The University of Texas at San Antonio</p>
-      </blockquote>
-
-      <section>
-        <h2>Some of my projects:</h2>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          ClockWork Mobile Application: May 2024 - August 2024
-        </h3>
-        <li>
-          Developed a Java-based Android productivity app using the MVC pattern,
-          integrating features such as a Pomodoro timer, Kanban board,
-          reminders, and calendar. storage.
-        </li>
-        <li>
-          Employed Java for backend logic, Android SDK for UI/UX, and data file
-          I/O for persistent task and preference
-        </li>
-        <li>
-          Generated comprehensive project documentation with intricate UML
-          diagrams to delineate system architecture and design intricacies.
-        </li>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          Stock Management Web Application: August 2024 – Present
-        </h3>
-
+      <!-- Introduction / About -->
+      <section class="card intro">
+        <h2>About Me</h2>
         <p>
-          • Developed a full-stack stock management dashboard using React for the frontend,
-            Node.js/Express for the backend, and PostgreSQL for data storage
-        </p>
-        <p>
-          • Implemented secure user authentication, displayed real-time
-           stock data with dynamic React components and RESTful API endpoints.
-        </p>
-
-        <p>
-          • Utilized Git for version control, following best
-            practices for code organization to ensure scalability and maintainability.
+            I am a Master's student at <strong>Cornell University</strong> (Class of '26) specializing in AI & Entrepreneurship, and a Computer Science graduate from <strong>UTSA</strong>. 
+            Currently working at the intersection of AI and applications, I am passionate about solving consumer problems with AI and exploring how it can transform daily life. 
+            I am actively developing my own suite of applications while preparing to join HP as a Software Product Manager.
         </p>
       </section>
 
-      <section class="light">
-        <h2>Work Experience</h2>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          Integration Software Developer Intern May 2024 – Present
-        </h3>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          Innovative Technologies
-          
-        </h3>
-
-        <li>
-          Designed and implemented Kafka connectors using JSON configurations
-          and Java classes to integrate databases with backend APIs for an enterprise application.
-        </li>
-        <li>
-          Configured source and sink connectors from scratch for a wide range of platforms
-          including Microsoft Azure, JDBC for MSSQL, Redis,
-          and ActiveMQ enabling seamless data transfer to storage solutions
-          like AWS S3 and MinIO in Parquet format.
-        </li>
-        <li>
-          Leveraged Docker and Docker Compose for containerized deployment
-          and streamlined connector management via Confluent Hub and Kafka Connect,
-          optimizing system scalability and maintainability.
-        </li>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          AI/ML Lab Researcher: September 2024 – Present 
-        </h3>
-        <h3
-          style="
-            font-style: plain;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          US Department of Energy MEDAL Program     
-          </h3>
- 
-        </h3>
-
-        
-
-
-        <li>
-          Developed Python scripts for real-time sensor data processing and robotic control
-          on Jetson NANO and Raspberry Pi 5, enabling autonomous systems in a lab testbed.
-        </li>
-        <li>
-          Integrated AI/ML, including YOLO models, for advanced autonomous capabilities
-          such as computer vision to enhance object detection and tracking. Deployed pre-trained 
-          models and used Docker for seamless integration and scaling of robotic functions.
-        </li>
-
-        <h3
-          style="
-            font-style: plain;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          Coding Instructor: May 2023 – Aug 2023
-        </h3>
-        <h3
-          style="
-            font-style: plain;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-          iCode     
-          </h3>
- 
-        </h3>
-
-        
-        <li>
-         Engaged as a coding tutor, promoting hands-on learning and individualized support to enhance students' programming skills
-        in Python and Scratch, through explanations, code debugging, and project guidance.
-        </li>
-        
-        
+      <!-- Education -->
+      <section class="card education">
+        <h2>Education</h2>
+        <div class="entry">
+            <h3>Cornell University</h3>
+            <p class="role">Master of Computer Science (AI & Entrepreneurship)</p>
+            <p class="date">Expected Graduation: Spring, 2026 | GPA: 4.0</p>
+        </div>
+        <div class="entry">
+            <h3>The University of Texas at San Antonio, Honors College</h3>
+            <p class="role">Bachelor of Science, Computer Science – Dual Concentrations in Data Science and Software Engineering</p>
+            <p class="date">Graduated: Spring, 2025 | GPA: 3.79</p>
+        </div>
       </section>
 
-      <blockquote>
-        <p>What we need to do is always look into the future. <br />-Tim Cook</p>
-      </blockquote>
-
-      <section class="left">
-        <h2
-         style="
-            font-style: plain;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >
-        About Me</h2>
-
+      <!-- Experience -->
+      <section class="card experience">
+        <h2>Experience</h2>
         
-        <p>
-         I am a student in the Honors College at UTSA, pursuing a Bachelor’s degree in Computer Science with a 
-         concentration in Data Science and Software Engineering.
-          My academic journey is driven by a deep curiosity about technology and a passion for learning, particularly in the fields of artificial intelligence and its transformative potential across industries. 
-         I aspire to contribute to the innovative advancements AI will bring to sectors 
-         like healthcare, finance, and beyond.
-         Additionally, I am fascinated by the intersection of technology and finance
-          and eager to explore how AI will shape the future of these industries.
-          With plans to pursue a Master’s degree, 
-          I am excited to deepen my knowledge and and further research opportunities for myself.
-          As I progress in my studies, I am eager to take on internships and real-world experiences
-          that allow me to gain practical learning.
-        </p>
-        <div class = links-container> </div>
-        <h3
-        style="
-            font-style: plain;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          "
-        >My links: </h3>
+        <!-- INCOMING ROLE -->
+        <div class="entry">
+            <h3>Hewlett Packard (HP)</h3>
+            <p class="role">Software Product Manager</p>
+            <p class="date">Starts July 2026</p>
+            <p class="description">Incoming Software Product Manager for HP's AI & Data solutions.</p>
+        </div>
 
-         <style>
-        .social-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 20px;
-    filter: invert(1);
-    transition: opacity 0.3s ease;
-}
-.social-link {
-            display: inline-block;
-            margin: 0 10px;
-        }
- .social-icon:hover {
-            opacity: 0.8; /* Slight fade effect on hover */
-        }
-        .links-container{
-          display:flex;
-          align-items:center;
-          gap: 20px
-        }
-    </style>
+        <div class="entry">
+            <h3>Hewlett Packard (HP)</h3>
+            <p class="role">Software Engineering/Product Management Intern</p>
+            <p class="date">May 2025 – Aug 2025</p>
+            <ul>
+                <li>Led the design and development of a telemetry system to categorize events and their attributes into structured risk levels, improving data governance and security analysis.</li>
+                <li>Partnered with cross-functional security, privacy, and data teams to author and validate a proprietary, industry-endorsed risk framework for telemetry data.</li>
+                <li>Fine-tuned a custom LLM on Databricks with security datasets and telemetry attributes to automate risk tagging—saving ~200 hours/month (60%) and accelerating insights.</li>
+                <li>Initiated customer onboarding workflows to enable telemetry collection from 100 million+ devices—laying the foundation for a projected 20% uptick in data-driven service adoption and associated revenue growth.</li>
+            </ul>
+        </div>
 
-          <a href="https://github.com/ramo2004" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="social-icon">
-    </a>
-    <a href="https://www.linkedin.com/in/omarimian/" target="_blank">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
-    </a>
+        <div class="entry">
+            <h3>US Department of Energy MEDAL Program</h3>
+            <p class="role">AI/ML Lab Researcher</p>
+            <p class="date">Sep 2024 – May 2025</p>
+            <ul>
+                <li>Developed Python scripts for real-time sensor data processing and robotic control using TensorFlow on Jetson NANO and Raspberry Pi 5, enabling autonomous systems in a lab testbed.</li>
+                <li>Integrated AI/ML, including OpenAI models, for advanced autonomous capabilities with potential healthcare applications. Deployed pre-trained models and used Docker for seamless integration and scaling of robotic functions.</li>
+                <li>Published at ICRA 2025 and presented findings at AI symposia alongside researchers from leading institutions.</li>
+            </ul>
+        </div>
 
-      
-
+        <div class="entry">
+            <h3>Innovative Technologies</h3>
+            <p class="role">Integration Software Developer Intern</p>
+            <p class="date">May 2024 – Dec 2024</p>
+            <ul>
+                <li>Designed and implemented Kafka connectors using Java classes to integrate databases with backend APIs for an enterprise application.</li>
+                <li>Configured source and sink connectors from scratch for a wide range of platforms including Microsoft Azure, JDBC for MSSQL, Github, and AWS.</li>
+                <li>Utilized Docker for application deployment, became proficient in managing connectors via Confluent Hub and Kafka Connect.</li>
+            </ul>
+        </div>
       </section>
 
-      <blockquote>
-        <p>Thanks for reading!</p>
-      </blockquote>
+      <!-- Projects -->
+      <section class="card projects">
+        <h2>Relevant Projects</h2>
+        
+        <div class="entry">
+          <h3>AI Skin Health Monitor App</h3>
+          <p class="date">Jan - June 2025</p>
+          <ul>
+              <li>Built a React Native (TypeScript + Expo) mobile app leveraging GPT-4 for on-device skin condition analysis with confidence-based re-prompting and optimized API.</li>
+              <li>Developed a Docker-containerized FastAPI backend to handle image processing, AI integration, and future custom-model training for improved diagnostic accuracy.</li>
+              <li>Managed Git-based version control and roadmap planning for App Store & Google Play deployment, ensuring scalable, cross-platform delivery.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Audio Conversion Pipeline</h3>
+          <p class="date">May - August 2025</p>
+          <ul>
+              <li>Built a serverless GCP pipeline (Cloud Functions/Run + Cloud Storage) to ingest PDFs/EPUBs and output MP3 audiobooks.</li>
+              <li>Extracted text via pdfminer.six, ebooklib/BeautifulSoup, or Vision-API OCR; isolated body text with jenkspy font-size clustering.</li>
+              <li>Chunked and synthesized content with Google Cloud Text-to-Speech (WaveNet), stitched segments using pydub/FFmpeg, and served via presigned URLs.</li>
+          </ul>
+        </div>
+        
+        <div class="entry pending-projects">
+            <h3>In Progress</h3>
+            <ul>
+                <li><strong>Project Launchpad:</strong> A computer science student matching platform designed to connect peers for hackathons, study groups, and project collaborations based on skill sets and interests.</li>
+                <li><strong>Inner Circle App:</strong> A private event management platform for close-knit communities.</li>
+            </ul>
+        </div>
+      </section>
+
+      <!-- The Spaghetti Code Section (Requested) -->
+      <section class="card playground">
+        <h2>The Playground</h2>
+        <p>A collection of smaller projects.</p>
+        <div class="link-grid">
+            <a href="https://questkeeper-v1.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">Quest Keeper (Pomodoro Timer)</a>
+            <a href="https://pdftoaudioconverter.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">PDF to Audiobook</a>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="card contact">
+        <h2>Get In Touch</h2>
+        <p>I'm always open to discussing new opportunities, collaborations, or just having a conversation about product management and AI.</p>
+        <a href="mailto:omarimian@gmail.com" class="contact-icon" aria-label="Email">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 6l10 7 10-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 Omar Mian. Built with Three.js & Vite.</p>
+      </footer>
     </main>
 
+    <!-- Main Entry Point -->
   </body>
 </html>
