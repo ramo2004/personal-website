@@ -1,10 +1,11 @@
 import { Clock } from 'three';
 
 class Loop {
-  constructor(camera, scene, renderer) {
+  constructor(camera, scene, renderer, composer = null) {
     this.camera = camera;
     this.scene = scene;
     this.renderer = renderer;
+    this.composer = composer; // Post-processing composer (optional)
     this.updatables = [];
     this.clock = new Clock();
     this.animationId = null;
@@ -13,7 +14,13 @@ class Loop {
   start() {
     this.renderer.setAnimationLoop(() => {
       this.tick();
-      this.renderer.render(this.scene, this.camera);
+
+      // Use composer if available (for post-processing), otherwise regular render
+      if (this.composer) {
+        this.composer.render();
+      } else {
+        this.renderer.render(this.scene, this.camera);
+      }
     });
   }
 

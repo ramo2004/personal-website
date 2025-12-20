@@ -1,3 +1,5 @@
+import { CONFIG } from '../config.js';
+
 class DebugOverlay {
     constructor(renderer) {
         this.renderer = renderer;
@@ -11,11 +13,13 @@ class DebugOverlay {
 
         document.body.appendChild(this.domElement);
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'd') {
+        this.keydownHandler = (e) => {
+            if (e.key === CONFIG.DEBUG_KEY) {
                 this.toggle();
             }
-        });
+        };
+
+        window.addEventListener('keydown', this.keydownHandler);
     }
 
     initStyles() {
@@ -60,6 +64,11 @@ class DebugOverlay {
       Geometries: ${info.memory.geometries}<br>
       Textures: ${info.memory.textures}
     `;
+    }
+
+    destroy() {
+        window.removeEventListener('keydown', this.keydownHandler);
+        this.domElement.remove();
     }
 }
 

@@ -1,14 +1,15 @@
 import { PerspectiveCamera } from 'three';
+import { CONFIG } from '../../config.js';
 
 function createCamera() {
     const camera = new PerspectiveCamera(
-        75, // fov
-        window.innerWidth / window.innerHeight, // aspect
-        0.1, // near
-        1000 // far
+        CONFIG.CAMERA_FOV,
+        window.innerWidth / window.innerHeight,
+        CONFIG.CAMERA_NEAR,
+        CONFIG.CAMERA_FAR
     );
 
-    camera.position.set(0, 0, 30);
+    camera.position.set(0, 0, CONFIG.CAMERA_START_Z);
 
     return camera;
 }

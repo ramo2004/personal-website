@@ -1,19 +1,22 @@
 import { MathUtils } from 'three';
+import { CONFIG } from '../config.js';
 
 class ScrollObserver {
     constructor() {
         this.targetScroll = 0;
         this.currentScroll = 0;
-        this.scrollRatio = 0; // 0 to 1 based on page height
+        this.scrollRatio = 0;
 
         this.bindEvents();
     }
 
     bindEvents() {
-        window.addEventListener('scroll', () => {
+        this.scrollHandler = () => {
             this.targetScroll = window.scrollY;
             this.updateScrollRatio();
-        });
+        };
+
+        window.addEventListener('scroll', this.scrollHandler);
 
         // Initial call
         this.targetScroll = window.scrollY;
@@ -30,13 +33,15 @@ class ScrollObserver {
     }
 
     tick(delta) {
-        // Lerp current scroll towards target (damping)
-        // Adjust 5.0 to change smoothing amount (higher = faster snap)
-        this.currentScroll = MathUtils.lerp(this.currentScroll, this.targetScroll, 5.0 * delta);
+        this.currentScroll = MathUtils.lerp(this.currentScroll, this.targetScroll, CONFIG.SCROLL_LERP * delta);
     }
 
     getScroll() {
         return this.currentScroll;
+    }
+
+    destroy() {
+        window.removeEventListener('scroll', this.scrollHandler);
     }
 }
 

@@ -2,31 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omar Mian | Technical Product Manager</title>
-    
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Omar Mian - Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP, building innovative AI-powered applications." />
+    <meta name="keywords" content="Omar Mian, Technical Product Manager, AI, Product Management, Cornell University, Software Engineering" />
+    <meta name="author" content="Omar Mian" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Omar Mian | Technical Product Manager" />
+    <meta property="og:description" content="Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://omarmian.com" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Omar Mian | Technical Product Manager" />
+    <meta name="twitter:description" content="Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP." />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Loading experience...</p>
+      </div>
+    </div>
+
     <!-- The 3D Canvas Container -->
-    <div id="bg-container"></div>
+    <div id="bg-container" aria-hidden="true"></div>
 
     <!-- Main Content Overlay -->
-    <main>
+    <main id="main-content">
       <header>
         <h1>Omar Mian</h1>
         <p class="subtitle">Technical Product Manager</p>
-        <div class="social-links">
-          <a href="https://github.com/ramo2004" target="_blank" aria-label="GitHub">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="social-icon">
+        <div class="header-actions">
+          <a href="/personal-website/Omar_Mian_Resume.pdf" download="Omar_Mian_Resume.pdf" class="btn-resume" aria-label="Download Resume">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 11L3 6L4.4 4.6L7 7.2V0H9V7.2L11.6 4.6L13 6L8 11Z" fill="currentColor"/>
+              <path d="M0 14V16H16V14H0Z" fill="currentColor"/>
+            </svg>
+            Resume
           </a>
-          <a href="https://www.linkedin.com/in/omarimian/" target="_blank" aria-label="LinkedIn">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
-          </a>
+          <div class="social-links">
+            <a href="https://github.com/ramo2004" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com/in/omarimian/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+            </a>
+          </div>
         </div>
       </header>
 
@@ -107,15 +146,8 @@
         <h2>Relevant Projects</h2>
         
         <div class="entry">
-          <h3>Project Launchpad</h3>
-          <p>
-            A computer science student matching platform designed to connect peers for hackathons, study groups, and project collaborations based on skill sets and interests.
-          </p>
-        </div>
-
-        <div class="entry">
           <h3>AI Skin Health Monitor App</h3>
-          <p class="date">Jan 2025 – Present</p>
+          <p class="date">Jan - June 2025</p>
           <ul>
               <li>Built a React Native (TypeScript + Expo) mobile app leveraging GPT-4 for on-device skin condition analysis with confidence-based re-prompting and optimized API.</li>
               <li>Developed a Docker-containerized FastAPI backend to handle image processing, AI integration, and future custom-model training for improved diagnostic accuracy.</li>
@@ -125,7 +157,7 @@
 
         <div class="entry">
           <h3>Audio Conversion Pipeline</h3>
-          <p class="date">July 2025 - Present</p>
+          <p class="date">May - August 2025</p>
           <ul>
               <li>Built a serverless GCP pipeline (Cloud Functions/Run + Cloud Storage) to ingest PDFs/EPUBs and output MP3 audiobooks.</li>
               <li>Extracted text via pdfminer.six, ebooklib/BeautifulSoup, or Vision-API OCR; isolated body text with jenkspy font-size clustering.</li>
@@ -136,7 +168,7 @@
         <div class="entry pending-projects">
             <h3>In Progress</h3>
             <ul>
-                <li><strong>Gamified Productivity App:</strong> A task management system combining RPG elements with productivity tracking.</li>
+                <li><strong>Project Launchpad:</strong> A computer science student matching platform designed to connect peers for hackathons, study groups, and project collaborations based on skill sets and interests.</li>
                 <li><strong>Inner Circle App:</strong> A private event management platform for close-knit communities.</li>
             </ul>
         </div>
@@ -145,13 +177,23 @@
       <!-- The Spaghetti Code Section (Requested) -->
       <section class="card playground">
         <h2>The Playground</h2>
-        <p>A collection of random experiments, spaghetti code, and smaller projects.</p>
+        <p>A collection of smaller projects.</p>
         <div class="link-grid">
-            <a href="#" class="btn-link">Random Algo Visualizer</a>
-            <a href="#" class="btn-link">Shader Experiments</a>
-            <a href="#" class="btn-link">Broken Physics Engine</a>
-            <a href="#" class="btn-link">Old React Apps</a>
+            <a href="https://questkeeper-v1.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">Quest Keeper (Pomodoro Timer)</a>
+            <a href="https://pdftoaudioconverter.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">PDF to Audiobook</a>
         </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="card contact">
+        <h2>Get In Touch</h2>
+        <p>I'm always open to discussing new opportunities, collaborations, or just having a conversation about product management and AI.</p>
+        <a href="mailto:omarimian@gmail.com" class="contact-icon" aria-label="Email">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 6l10 7 10-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </section>
 
       <footer>

@@ -1,39 +1,28 @@
-import { MathUtils } from 'three';
+import { CONFIG } from '../../config.js';
 
 class AnimationController {
-    constructor(camera, sceneObjects) {
+    constructor(camera, sceneObjects, scrollObserver) {
         this.camera = camera;
-        this.objects = sceneObjects; // { terrain, particles }
+        this.objects = sceneObjects;
+        this.scrollObserver = scrollObserver;
 
-        // Initial camera position adjustment for the landscape
-        this.camera.position.set(0, 5, 20);
+        // Position camera for a good view
+        this.camera.position.set(0, 0, CONFIG.CAMERA_START_Z);
         this.camera.lookAt(0, 0, 0);
     }
 
-    tick(delta, scrollCurrent) {
-        // scrollCurrent is roughly 0 to 1 (normalized by doc height in ScrollObserver? No, it was scrollY lerped)
-        // Actually ScrollObserver.getScroll() returns the raw lerped Y value (pixels).
+    tick(delta) {
+        const t = this.scrollObserver ? this.scrollObserver.getScroll() : 0;
 
-        const t = scrollCurrent;
+        // Camera movement using CONFIG
+        this.camera.position.z = CONFIG.CAMERA_START_Z - (t * CONFIG.SCROLL_SPEED);
 
-        // Camera movement: Fly "forward" over the terrain as we scroll down
-        // We move -Z (into the screen).
+        // Gentle rotation based on scroll
+        this.camera.rotation.z = t * 0.0001;
+    }
 
-        // Base position + scroll offset
-        // As we scroll (t increases), Z decreases (moves forward)
-        this.camera.position.z = 20 - (t * 0.02);
-
-        // Also slight lift/tilt
-        // this.camera.position.y = 5 + (t * 0.005);
-
-        // Don't modify lookAt every frame unless necessary or using a target object.
-        // Simple linear movement is often cleanest.
-
-        // Optional: Particles could rise or fall?
-        if (this.objects.particles) {
-            // Reverse direction of particles to enhance speed feeling
-            this.objects.particles.rotation.z = t * 0.0002;
-        }
+    destroy() {
+        // No cleanup needed for this system
     }
 }
 
