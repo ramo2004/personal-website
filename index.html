@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar Mian | Technical Product Manager</title>
-
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="Omar Mian - Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP, building innovative AI-powered applications." />
     <meta name="keywords" content="Omar Mian, Technical Product Manager, AI, Product Management, Cornell University, Software Engineering" />
@@ -22,186 +22,299 @@
     <meta name="twitter:title" content="Omar Mian | Technical Product Manager" />
     <meta name="twitter:description" content="Technical Product Manager specializing in AI & Entrepreneurship. Cornell University grad student with experience at HP." />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <!-- Skip Navigation for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #fff;
+            --border: #1a1a1a;
+            --text-dim: #71717a;
+            --text-bright: #e4e4e7;
+            --terminal-bg: rgba(12, 12, 12, 0.8);
+            --green: #27c93f;
+            --sidebar-width: 320px;
+        }
+        
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body { 
+            margin: 0; background: var(--bg); color: var(--text-bright); 
+            font-family: 'Space Grotesk', sans-serif; height: 100vh; 
+            display: flex; overflow: hidden; 
+        }
 
-    <!-- Scroll Progress Indicator -->
-    <div id="scroll-progress"></div>
+        /* Layout Structure */
+        .sidebar { 
+            width: var(--sidebar-width); border-right: 1px solid var(--border); 
+            padding: 60px 40px; display: flex; flex-direction: column; 
+            justify-content: space-between; background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px); z-index: 100;
+        }
 
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-      <div class="loading-content">
-        <div class="loading-spinner"></div>
-        <p>Loading experience...</p>
-      </div>
+        .main-scroll-area {
+            flex: 1; height: 100vh; overflow-y: auto; overflow-x: hidden;
+            position: relative; padding-bottom: 100px;
+        }
+
+        .section-container {
+            max-width: 900px; margin: 0 auto; padding: 100px 40px;
+        }
+
+        /* Aesthetics */
+        .bg-grid { 
+            position: fixed; inset: 0; 
+            background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); 
+            background-size: 40px 40px; z-index: -1; 
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-dim); text-transform: uppercase; }
+
+        h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; line-height: 0.85; text-transform: uppercase; font-weight: 700; letter-spacing: -0.04em; }
+        h1 .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+
+        h2 { font-size: 2rem; text-transform: uppercase; margin-bottom: 40px; letter-spacing: -0.02em; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+        .role-tag {
+            display: inline-block; background: var(--accent); color: #000;
+            padding: 6px 16px; border-radius: 4px; font-weight: 700;
+            font-size: 1.1rem; margin-top: 24px; text-transform: uppercase;
+        }
+
+        /* Nav Links */
+        .nav-links { list-style: none; padding: 0; margin: 40px 0; }
+        .nav-links li { margin-bottom: 20px; }
+        .nav-links a { 
+            color: var(--text-dim); text-decoration: none; font-size: 1.4rem; 
+            font-weight: 300; transition: all 0.3s ease; 
+            display: flex; align-items: center; gap: 15px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; transform: translateX(8px); }
+
+        /* Terminal Component */
+        .terminal { 
+            margin-top: 60px; background: var(--terminal-bg); 
+            border: 1px solid var(--border); border-radius: 12px; 
+            padding: 24px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px); position: relative;
+        }
+        .terminal-header { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .terminal-body { font-size: 0.95rem; line-height: 1.6; color: #bbb; font-family: 'JetBrains Mono', monospace; }
+        .prompt { color: var(--green); margin-right: 10px; }
+        .keyword { color: #fff; font-weight: 700; }
+        .cursor { width: 8px; height: 18px; background: #fff; display: inline-block; vertical-align: middle; animation: blink 1s infinite; margin-left: 4px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Content Blocks */
+        .card-list { display: flex; flex-direction: column; gap: 48px; }
+        .entry { position: relative; }
+        .entry-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .entry-title { font-size: 1.4rem; font-weight: 700; margin: 0; color: #fff; }
+        .entry-meta { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+        .entry-list { padding-left: 20px; color: #a1a1aa; line-height: 1.6; font-size: 0.95rem; }
+        .entry-list li { margin-bottom: 8px; }
+
+        /* Links Grid */
+        .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+        .btn-link { 
+            padding: 16px; border: 1px solid var(--border); border-radius: 8px; 
+            color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255,255,255,0.02);
+        }
+        .btn-link:hover { background: rgba(255,255,255,0.05); border-color: #444; transform: translateY(-2px); }
+
+        .resume-btn {
+            background: transparent; color: #fff; padding: 12px 24px; border-radius: 8px;
+            text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 10px;
+            transition: all 0.2s; border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .resume-btn:hover { background: rgba(39, 201, 63, 0.1); border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+        .social-icons { display: flex; gap: 20px; margin-top: 30px; }
+        .social-icons a { color: var(--text-dim); transition: 0.2s; }
+        .social-icons a:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; overflow-y: auto; }
+            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 40px; position: relative; }
+            .main-scroll-area { height: auto; overflow: visible; }
+            .section-container { padding: 60px 24px; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <aside class="sidebar">
+        <div>
+            <div class="mono">Portfolio OS // v3.2</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-info">
+                <div class="mono" style="margin-bottom: 10px;">User: omar_mian</div>
+                CORNELL UNIVERSITY '26<br>
+                TECHNICAL PRODUCT MANAGER
+            </div>
+            <div class="social-icons">
+                 <a href="https://github.com/ramo2004" target="_blank">GitHub</a>
+                 <a href="https://www.linkedin.com/in/omarimian/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main-scroll-area">
+        <!-- Hero Section -->
+        <section class="section-container" id="home">
+            <div class="mono">System Status: Optimal // Ping: 14ms</div>
+            <h1><span class="outline">Omar</span><br>Mian</h1>
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <span class="role-tag">Technical Product Manager</span>
+                <a href="/Omar_Mian_Resume.pdf" download="Omar_Mian_Resume.pdf" class="resume-btn" style="margin-top: 24px;">Download Resume</a>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <div class="mono" style="margin-left: auto; margin-bottom: 0;">bash — profile_view</div>
+                </div>
+                <div class="terminal-body">
+                    <div><span class="prompt">➜</span> <span class="keyword">whoami</span></div>
+                    <div style="margin-top: 15px;">
+                        I am a Master's student at <span class="keyword">Cornell University</span> ('26) specializing in AI & Entrepreneurship, and a CS graduate from <span class="keyword">UTSA</span>. 
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Currently working at the intersection of <span class="keyword">AI and applications</span>, solving consumer problems and exploring how AI transforms daily life. 
+                    </div>
+                    <div style="margin-top: 10px;">
+                        I am actively developing applications while preparing to join <span class="keyword">HP Inc.</span> as a <span class="keyword">Software Product Manager</span> in 2026.
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section-container" id="experience">
+            <h2>Experience</h2>
+            <div class="card-list">
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Hewlett Packard (HP)</h3>
+                        <span class="mono">Incoming July '26</span>
+                    </div>
+                    <div class="entry-meta">Software Product Manager</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Hewlett Packard (HP)</h3>
+                        <span class="mono">May '25 – Aug '25</span>
+                    </div>
+                    <div class="entry-meta">SWE / Product Management Intern</div>
+                    <ul class="entry-list">
+                        <li>Led telemetry system design to categorize risk levels, improving data governance.</li>
+                        <li>Fine-tuned custom LLM on Databricks to automate risk tagging—saving ~200 hours/month (60%).</li>
+                        <li>Initiated workflows for telemetry collection from 100M+ devices.</li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3 class="entry-title">US Dept. of Energy (MEDAL)</h3>
+                        <span class="mono">Sep '24 – May '25</span>
+                    </div>
+                    <div class="entry-meta">AI/ML Lab Researcher</div>
+                    <ul class="entry-list">
+                        <li>Developed real-time sensor processing and robotic control using TensorFlow on Jetson NANO.</li>
+                        <li>Integrated OpenAI models for healthcare applications; published at <span class="keyword">ICRA 2025</span>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section-container" id="education">
+            <h2>Education</h2>
+            <div class="card-list">
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Cornell University</h3>
+                        <span class="mono">GPA: 4.0</span>
+                    </div>
+                    <div class="entry-meta">Master of Computer Science (AI & Entrepreneurship)</div>
+                </div>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3 class="entry-title">UTSA, Honors College</h3>
+                        <span class="mono">GPA: 3.79</span>
+                    </div>
+                    <div class="entry-meta">BS Computer Science (Data Science & SWE)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section-container" id="projects">
+            <h2>Projects</h2>
+            <div class="card-list">
+                <div class="entry">
+                    <h3 class="entry-title">AI Skin Health Monitor</h3>
+                    <div class="entry-meta">React Native • FastAPI • GPT-4</div>
+                    <p style="color: #888;">Mobile app leveraging AI for on-device skin condition analysis with confidence-based re-prompting.</p>
+                </div>
+                
+                <div class="entry">
+                    <h3 class="entry-title">Audio Conversion Pipeline</h3>
+                    <div class="entry-meta">GCP • Python • WaveNet</div>
+                    <p style="color: #888;">Serverless pipeline to ingest PDFs/EPUBs and output high-quality MP3 audiobooks via Vision OCR.</p>
+                </div>
+            </div>
+
+            <div class="mono" style="margin-top: 60px; margin-bottom: 20px;">The Playground / Experiments</div>
+            <div class="link-grid">
+                <a href="https://questkeeper-v1.netlify.app/" target="_blank" class="btn-link">Quest Keeper <span>↗</span></a>
+                <a href="https://pdftoaudioconverter.netlify.app/" target="_blank" class="btn-link">PDF to Audiobook <span>↗</span></a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-container" id="contact" style="text-align: center;">
+            <h2>Get In Touch</h2>
+            <p style="color: #888; margin-bottom: 40px;">I'm open to discussing opportunities in AI and Product Management.</p>
+            <a href="mailto:omarimian@gmail.com" class="resume-btn" style="background: transparent; color: #fff; border: 1px solid var(--border);">omarimian@gmail.com</a>
+        </section>
     </div>
 
-    <!-- The 3D Canvas Container -->
-    <div id="bg-container" aria-hidden="true"></div>
+    <script>
+        // Track navigation active states
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+                    });
+                }
+            });
+        }, observerOptions);
 
-    <!-- Main Content Overlay -->
-    <main id="main-content">
-      <header>
-        <h1>Omar Mian</h1>
-        <p class="subtitle">Technical Product Manager</p>
-        <div class="header-actions">
-          <a href="/personal-website/Omar_Mian_Resume.pdf" download="Omar_Mian_Resume.pdf" class="btn-resume" aria-label="Download Resume">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 11L3 6L4.4 4.6L7 7.2V0H9V7.2L11.6 4.6L13 6L8 11Z" fill="currentColor"/>
-              <path d="M0 14V16H16V14H0Z" fill="currentColor"/>
-            </svg>
-            Resume
-          </a>
-          <div class="social-links">
-            <a href="https://github.com/ramo2004" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="social-icon">
-            </a>
-            <a href="https://www.linkedin.com/in/omarimian/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <!-- Introduction / About -->
-      <section class="card intro">
-        <h2>About Me</h2>
-        <p>
-            I am a Master's student at <strong>Cornell University</strong> (Class of '26) specializing in AI & Entrepreneurship, and a Computer Science graduate from <strong>UTSA</strong>. 
-            Currently working at the intersection of AI and applications, I am passionate about solving consumer problems with AI and exploring how it can transform daily life. 
-            I am actively developing my own suite of applications while preparing to join HP as a Software Product Manager.
-        </p>
-      </section>
-
-      <!-- Education -->
-      <section class="card education">
-        <h2>Education</h2>
-        <div class="entry">
-            <h3>Cornell University</h3>
-            <p class="role">Master of Computer Science (AI & Entrepreneurship)</p>
-            <p class="date">Expected Graduation: Spring, 2026 | GPA: 4.0</p>
-        </div>
-        <div class="entry">
-            <h3>The University of Texas at San Antonio, Honors College</h3>
-            <p class="role">Bachelor of Science, Computer Science – Dual Concentrations in Data Science and Software Engineering</p>
-            <p class="date">Graduated: Spring, 2025 | GPA: 3.79</p>
-        </div>
-      </section>
-
-      <!-- Experience -->
-      <section class="card experience">
-        <h2>Experience</h2>
-        
-        <!-- INCOMING ROLE -->
-        <div class="entry">
-            <h3>Hewlett Packard (HP)</h3>
-            <p class="role">Software Product Manager</p>
-            <p class="date">Starts July 2026</p>
-            <p class="description">Incoming Software Product Manager for HP's AI & Data solutions.</p>
-        </div>
-
-        <div class="entry">
-            <h3>Hewlett Packard (HP)</h3>
-            <p class="role">Software Engineering/Product Management Intern</p>
-            <p class="date">May 2025 – Aug 2025</p>
-            <ul>
-                <li>Led the design and development of a telemetry system to categorize events and their attributes into structured risk levels, improving data governance and security analysis.</li>
-                <li>Partnered with cross-functional security, privacy, and data teams to author and validate a proprietary, industry-endorsed risk framework for telemetry data.</li>
-                <li>Fine-tuned a custom LLM on Databricks with security datasets and telemetry attributes to automate risk tagging—saving ~200 hours/month (60%) and accelerating insights.</li>
-                <li>Initiated customer onboarding workflows to enable telemetry collection from 100 million+ devices—laying the foundation for a projected 20% uptick in data-driven service adoption and associated revenue growth.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <h3>US Department of Energy MEDAL Program</h3>
-            <p class="role">AI/ML Lab Researcher</p>
-            <p class="date">Sep 2024 – May 2025</p>
-            <ul>
-                <li>Developed Python scripts for real-time sensor data processing and robotic control using TensorFlow on Jetson NANO and Raspberry Pi 5, enabling autonomous systems in a lab testbed.</li>
-                <li>Integrated AI/ML, including OpenAI models, for advanced autonomous capabilities with potential healthcare applications. Deployed pre-trained models and used Docker for seamless integration and scaling of robotic functions.</li>
-                <li>Published at ICRA 2025 and presented findings at AI symposia alongside researchers from leading institutions.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <h3>Innovative Technologies</h3>
-            <p class="role">Integration Software Developer Intern</p>
-            <p class="date">May 2024 – Dec 2024</p>
-            <ul>
-                <li>Designed and implemented Kafka connectors using Java classes to integrate databases with backend APIs for an enterprise application.</li>
-                <li>Configured source and sink connectors from scratch for a wide range of platforms including Microsoft Azure, JDBC for MSSQL, Github, and AWS.</li>
-                <li>Utilized Docker for application deployment, became proficient in managing connectors via Confluent Hub and Kafka Connect.</li>
-            </ul>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section class="card projects">
-        <h2>Relevant Projects</h2>
-        
-        <div class="entry">
-          <h3>AI Skin Health Monitor App</h3>
-          <p class="date">Jan - June 2025</p>
-          <ul>
-              <li>Built a React Native (TypeScript + Expo) mobile app leveraging GPT-4 for on-device skin condition analysis with confidence-based re-prompting and optimized API.</li>
-              <li>Developed a Docker-containerized FastAPI backend to handle image processing, AI integration, and future custom-model training for improved diagnostic accuracy.</li>
-              <li>Managed Git-based version control and roadmap planning for App Store & Google Play deployment, ensuring scalable, cross-platform delivery.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <h3>Audio Conversion Pipeline</h3>
-          <p class="date">May - August 2025</p>
-          <ul>
-              <li>Built a serverless GCP pipeline (Cloud Functions/Run + Cloud Storage) to ingest PDFs/EPUBs and output MP3 audiobooks.</li>
-              <li>Extracted text via pdfminer.six, ebooklib/BeautifulSoup, or Vision-API OCR; isolated body text with jenkspy font-size clustering.</li>
-              <li>Chunked and synthesized content with Google Cloud Text-to-Speech (WaveNet), stitched segments using pydub/FFmpeg, and served via presigned URLs.</li>
-          </ul>
-        </div>
-        
-        <div class="entry pending-projects">
-            <h3>In Progress</h3>
-            <ul>
-                <li><strong>Project Launchpad:</strong> A computer science student matching platform designed to connect peers for hackathons, study groups, and project collaborations based on skill sets and interests.</li>
-                <li><strong>Inner Circle App:</strong> A private event management platform for close-knit communities.</li>
-            </ul>
-        </div>
-      </section>
-
-      <!-- The Spaghetti Code Section (Requested) -->
-      <section class="card playground">
-        <h2>The Playground</h2>
-        <p>A collection of smaller projects.</p>
-        <div class="link-grid">
-            <a href="https://questkeeper-v1.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">Quest Keeper (Pomodoro Timer)</a>
-            <a href="https://pdftoaudioconverter.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-link">PDF to Audiobook</a>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="card contact">
-        <h2>Get In Touch</h2>
-        <p>I'm always open to discussing new opportunities, collaborations, or just having a conversation about product management and AI.</p>
-        <a href="mailto:omarimian@gmail.com" class="contact-icon" aria-label="Email">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 6l10 7 10-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </section>
-
-      <footer>
-        <p>&copy; 2025 Omar Mian. Built with Three.js & Vite.</p>
-      </footer>
-    </main>
-
-    <!-- Main Entry Point -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+    </script>
+</body>
 </html>
