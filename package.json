@@ -1,0 +1,13 @@
+{
+  "name": "personal-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Omar Mian's portfolio website",
+  "scripts": {
+    "dev": "npx serve -p 3000",
+    "deploy": "gh-pages -d ."
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
