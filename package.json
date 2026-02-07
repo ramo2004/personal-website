@@ -5,7 +5,8 @@
   "description": "Omar Mian's portfolio website",
   "scripts": {
     "dev": "npx serve -p 3000",
-    "deploy": "gh-pages -d ."
+    "build": "rm -rf dist && mkdir -p dist && cp index.html favicon.svg Omar_Mian_Resume.pdf dist/ && cp -r public dist/",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.0.0"
