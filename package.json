@@ -5,7 +5,7 @@
   "description": "Omar Mian's portfolio website",
   "scripts": {
     "dev": "npx serve -p 3000",
-    "build": "rm -rf dist && mkdir -p dist && cp index.html favicon.svg Omar_Mian_Resume.pdf dist/ && cp -r public dist/",
+    "build": "rm -rf dist && mkdir -p dist && cp index.html favicon.svg Omar_Mian_Resume.pdf Omar_Mian_Pitch_Deck.pdf dist/ && cp -r public dist/",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
